@@ -125,6 +125,7 @@ class ZeusServer:
         self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server_socket.bind((self.host, self.port))
         
+
         print("Server Running at {}:{}".format(self.host,self.port))
 
     def run_client_command(self):

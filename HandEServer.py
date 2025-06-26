@@ -79,7 +79,9 @@ class HandEController():
         Input: None
         Output: list
         '''
-        self.gripper.write_registers(self.output_address, [0x0900, goal_position, (goal_speed << 8) | goal_force])
+        run_action_byte = 0x0900
+        
+        self.gripper.write_registers(self.output_address, [run_action_byte, goal_position, (goal_speed << 8) | goal_force])
         time.sleep(2)
 
         return str(self.get_hande_status())
@@ -88,6 +90,9 @@ class HandEServer:
     def __init__(self):
         """
         Initialize server setup
+        
+        Input: None
+        Output: None
         """
         self.host = "0.0.0.0"
         self.port = 5555
@@ -101,6 +106,9 @@ class HandEServer:
     def run_client_command(self):
         """
         Running server and collect response from client
+        
+        Input: None
+        Output: None
         """
         hc = HandEController()
 
@@ -138,6 +146,9 @@ class HandEServer:
 def main():
     """
     Main function
+    
+        Input: None
+        Output: None
     """
     # hc = HandEController()
     # hc.initialize_hande()
